@@ -1,17 +1,6 @@
-import { useState, useEffect } from "react";
+import Clock from "./components/Clock";
 function App() {
-  const [count, setCount] = useState();
-
-  useEffect(() => {
-    setTimeout(() => {
-      setCount(new Date().toLocaleTimeString());
-    }, 1000);
-  }, [setCount, count]);
-  return (
-    <div>
-      <h1>{count}</h1>
-    </div>
-  );
+  return <Clock />;
 }
 
 export default App;
