@@ -1,0 +1,20 @@
+.card {
+    text-align: center;
+    padding: 2rem;
+    box-shadow: 0px 5px 12px;
+}
+
+.card:nth-child(1) {
+    color: #AC390C;
+    background-color: #FFD8A8;
+}
+
+.card:nth-child(2) {
+    color: #1F642D;
+    background-color: #B2F2BB;
+}
+
+.card:nth-child(3) {
+    color: #1F642D;
+    background-color: #96f2d7;
+}

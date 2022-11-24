@@ -1,0 +1,9 @@
+.select_label {
+    font-size: 2rem;
+    margin-right: 1rem;
+}
+
+.select {
+    border-radius: 4px;
+    padding: .5rem 2rem;
+}

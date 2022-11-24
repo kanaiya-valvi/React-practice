@@ -1,6 +1,6 @@
-import Clock from "./components/Clock";
+import CovidLive from "./components/CovidLive";
 function App() {
-  return <Clock />;
+  return <CovidLive />;
 }
 
 export default App;
