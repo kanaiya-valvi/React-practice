@@ -3,14 +3,20 @@ import useInput from "../hooks/InputValidation";
 const Form = () => {
   const {
     value: enterdName,
+    hasError: nameHasError,
     isValid: nameIsValid,
     valueChangeHenders: nameCahangedHender,
+    inputBlurHandler: nameBlurHandler,
+    reset: resetNameHandler,
   } = useInput((value) => value.trim() !== "");
   const {
     value: enteredEmail,
     isValid: emialIsValid,
+    hasError: emailHasError,
     valueChangeHenders: emailChangeHender,
-  } = useInput((value) => value.includes("@"));
+    inputBlurHandler: emailBlurHandler,
+    reset: resetEmailHandler,
+  } = useInput((email) => email.includes("@"));
   const inputfild = [
     {
       key_no: 1,
@@ -19,29 +25,34 @@ const Form = () => {
       id: "name",
       change: nameCahangedHender,
       value: enterdName,
+      valid: nameIsValid,
+      blure: nameBlurHandler,
+      error: nameHasError,
     },
     {
       key_no: 2,
       name: "Email",
       type: "email",
       id: "email",
+      valid: emialIsValid,
       change: emailChangeHender,
       value: enteredEmail,
+      blure: emailBlurHandler,
+      error: emailHasError,
     },
-    // {
-    //   key_no: 3,
-    //   name: "Password",
-    //   type: "password",
-    //   id: "password",
-    //   cahnge: valueChangeHenders,
-    //   value: "",
-    // },
   ];
+  let formIsValid = false;
+  if (nameIsValid && emialIsValid) formIsValid = true;
 
   const submitHandler = (e) => {
     e.preventDefault();
-    if (nameIsValid && emialIsValid) console.log(enterdName, enteredEmail);
-    else console.log("somthig is Wrong!!");
+    if (nameIsValid && emialIsValid) {
+      console.log(enterdName, enteredEmail);
+      resetNameHandler();
+      resetEmailHandler();
+    } else {
+      console.log("somthig is wrong!!");
+    }
   };
 
   return (
@@ -50,13 +61,18 @@ const Form = () => {
         <Inputs
           key={data.key_no}
           type={data.type}
+          valid={data.valid}
           id={data.id}
+          blure={data.blure}
           change={data.change}
           name={data.name}
           value={data.value}
+          error={data.error}
         />
       ))}
-      <button type="submit">submit</button>
+      <button type="submit" disabled={!formIsValid}>
+        submit
+      </button>
     </form>
   );
 };
