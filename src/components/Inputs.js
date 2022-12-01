@@ -1,11 +1,16 @@
 const Inputs = (props) => {
-  console.log(props.data)
   return (
-    // <div key={props.keys}>
-    //   <label htmlFor={props.id}>{props.name}:</label>
-    //   <br />
-    <input key={props.data} type={props.type} id={props.id} name={props.name} />
-    // </div>
+    <div key={props.keys}>
+      <label htmlFor={props.id}>{props.name}:</label>
+      <br />
+      <input
+        type={props.type}
+        id={props.id}
+        onChange={props.change}
+        name={props.name}
+        value={props.value}
+      />
+    </div>
   );
 };
 export default Inputs;
